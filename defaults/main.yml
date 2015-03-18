@@ -1,2 +1,16 @@
 ---
-
+# file: defaults/main.yml
+# these values are default - change for security!
+db: foo
+clustername: foo
+pxc_conf:
+    dbusers:
+        root:
+            username: root
+            password: [REDACTED]
+        xtrabackup:
+            username: xtrabackup 
+            password: [REDACTED]
+        clustercheck:
+            username: clustercheck
+            password: [REDACTED]

@@ -1,4 +1,4 @@
-## pxc
+## swa-pxc
 
 [![Travis CI](http://img.shields.io/travis/sacres/ansible/roles/pxc.svg?style=flat)](http://travis-ci.org/sacres/ansible/roles/pxc)  [![Platforms](http://img.shields.io/badge/platforms-el-lightgrey.svg?style=flat)](#)
 
