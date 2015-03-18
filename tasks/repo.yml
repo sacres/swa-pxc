@@ -1,0 +1,8 @@
+---
+# file: tasks/repo.yml
+
+ - name: Download and install percona repo for Centos
+   yum: name=http://www.percona.com/redir/downloads/percona-release/redhat/0.0-1/percona-release-0.0-1.x86_64.rpm state=present
+
+ - name: Install modified with hardcoded releasever percona repo file
+   template: src=Percona.repo.j2 dest=/etc/yum.repos.d/Percona.repo

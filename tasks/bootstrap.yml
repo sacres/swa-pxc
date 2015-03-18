@@ -1,0 +1,13 @@
+---
+# pxc bootstrap file
+
+- name: Determine if MySQL is running
+  register: mysql_running
+  shell: systemctl status mysql.service > /dev/null
+#  changed_when: False
+  ignore_errors: True
+
+- name: Bootstrap - starting mysql with bootstrap-pxc
+  service: name=mysql@bootstrap state=started
+  when: (mysql_running.rc != 0)
+  delegate_to: db1

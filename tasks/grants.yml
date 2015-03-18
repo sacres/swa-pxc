@@ -1,0 +1,27 @@
+---
+# file: tasks/grants.yml
+
+- name: Set root user authentication
+  mysql_user: login_user=root login_password={{ pxc_conf['dbusers']['root']['password'] }} user={{ pxc_conf['dbusers']['root']['username'] }} password={{ pxc_conf['dbusers']['root']['password'] }}
+
+- name: Set root user authentication
+  mysql_user: login_user=root login_password={{ pxc_conf['dbusers']['root']['password'] }} user={{ pxc_conf['dbusers']['root']['username'] }} password={{ pxc_conf['dbusers']['root']['password'] }}
+
+- name: Create MySQL authentication file
+  template: src=client.my.cnf.j2 dest=/root/.my.cnf owner=root group=root mode=600
+
+- name: Add xtrabackup database user (for Galera SST)
+  run_once: true
+  mysql_user: login_user=root login_password={{ pxc_conf['dbusers']['root']['password'] }} user={{ pxc_conf['dbusers']['xtrabackup']['username'] }} host="%" password={{ pxc_conf['dbusers']['xtrabackup']['password'] }} priv=*.*:"grant,reload,replication client" state=present
+
+- name: Remove usernameless user from localhost
+  run_once: true
+  mysql_user: login_user=root login_password={{ pxc_conf['dbusers']['root']['password'] }} user="" host="localhost" state="absent"
+
+- name: Remove usernameless user from hostname
+  run_once: true
+  mysql_user: login_user=root login_password={{ pxc_conf['dbusers']['root']['password'] }} user="" host={{ ansible_hostname }} state="absent"
+
+- name: start mysql on remaining nodes
+  service: name=mysql state=restarted enabled=yes
+  when: (ansible_hostname != 'db1')

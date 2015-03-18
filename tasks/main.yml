@@ -1,0 +1,9 @@
+---
+# file: tasks/main.yml
+
+ - include: repo.yml
+ - include: install_pxc.yml
+ - include: configure_mysql.yml
+ - include: bootstrap.yml
+ - include: grants.yml
+ - include: dbs.yml

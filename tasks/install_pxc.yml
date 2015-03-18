@@ -1,0 +1,15 @@
+---
+# pxc install_pxc file
+
+- name: Install Percona XtraDB Cluster server
+  yum: name={{ item }}
+       state=present
+  with_items:
+    - Percona-XtraDB-Cluster-server-56
+    - MySQL-python
+
+- name: Ensure MySQL log directory exists and is writeable
+  file: path=/var/log/mysql state=directory owner=mysql group=mysql mode=0755
+
+- name: Enable mysql service
+  service: name=mysql enabled=yes

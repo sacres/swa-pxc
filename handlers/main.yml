@@ -1,0 +1,14 @@
+---
+# pxc handlers
+
+ - name: start mysql
+   service: name=mysql start
+
+ - name: restart mysql
+   service: name=mysql restart
+
+ - name: bootstrap node
+   service: name=mysql@bootstrap state=started
+
+ - name: reload systemd
+   command: systemctl daemon-reload

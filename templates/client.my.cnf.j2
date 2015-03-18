@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+[client]
+port=3306
+user={{ pxc_conf['dbusers']['root']['username'] }}
+password={{ pxc_conf['dbusers']['root']['password'] }}
