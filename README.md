@@ -1,6 +1,6 @@
-## swa-pxc
+## pxc
 
-[![Travis CI](http://img.shields.io/travis/sacres/ansible/roles/pxc.svg?style=flat)](http://travis-ci.org/sacres/ansible/roles/pxc)  [![Platforms](http://img.shields.io/badge/platforms-el-lightgrey.svg?style=flat)](#)
+  [![Platforms](http://img.shields.io/badge/platforms-EL-blue.svg?style=flat)](#)
 
 pxc -- build a galera/Percona-xtradb cluster
 
@@ -11,7 +11,22 @@ pxc -- build a galera/Percona-xtradb cluster
 List of default variables available in the inventory:
 
     ---
-pxc -- see main.yml-redacted in ./defaults
+    # file: defaults/main.yml
+    # these values are default - change for security!
+    db: foo
+    clustername: foo
+    pxc_conf:
+        dbusers:
+            root:
+                username: root
+                password: [REDACTED]
+            xtrabackup:
+                username: xtrabackup
+                password: [REDACTED]
+            clustercheck:
+                username: clustercheck
+                password: [REDACTED]
+
 
 ### Detailed usage guide
 
@@ -27,11 +42,10 @@ pxc -- see main.yml-redacted in ./defaults
 3. Run your playbook: ansible-playbook -i inventory/foo db.yml
 
 
-
 ### Authors and license
 
 `pxc` role was written by:
-- [Steven Acres](https://github.com/sacres/ansible) | [e-mail](mailto:steven@swatteksystems.com) | [Twitter](https://twitter.com/swamobil)
+- [Steven Acres](https://github.com/sacres) | [e-mail](mailto:steven@swatteksystems.com) | [Twitter](https://twitter.com/swamobil)
 License: [BSDv3](https://tldrlegal.com/license/bsd-3-clause-license-(revised))
 
 ***
