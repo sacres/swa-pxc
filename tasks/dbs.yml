@@ -5,4 +5,4 @@
 
 - name: Create DB
   run_once: true
-  mysql_db: login_user=root login_password={{ pxc_conf['dbusers']['root']['password'] }} name={{ db }}beam state=present
+  mysql_db: login_user=root login_password={{ pxc_conf['dbusers']['root']['password'] }} name={{ db }} state=present
